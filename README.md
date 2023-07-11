@@ -1,13 +1,13 @@
 ## HOW TO RUN
 
-first copy .env.example and paste on root in project after copy and paste just rename .env ,
-then running
-php artisan key:generate
-composer install
-npm install
-php artisan migrate --seed
-finally run
-php artisan serve and npm run dev
+- first copy .env.example and paste on root in project after copy and paste just rename .env ,
+**then running**
+- php artisan key:generate
+- composer install
+- npm install
+- php artisan migrate --seed
+- finally run
+- php artisan serve and npm run dev
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
