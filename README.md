@@ -1,7 +1,7 @@
 ## HOW TO RUN
 
 - first copy .env.example and paste on root in project after copy and paste just rename .env ,
-**then running**
+- **then running**
 - php artisan key:generate
 - composer install
 - npm install
