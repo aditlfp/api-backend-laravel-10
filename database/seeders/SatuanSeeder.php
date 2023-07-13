@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Satuan;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -12,6 +13,11 @@ class SatuanSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        $arr = ['pcs'];
+        foreach($arr as $data => $value){
+            $role = new Satuan();
+            $role->name = $value;
+            $role->save();
+        }
     }
 }

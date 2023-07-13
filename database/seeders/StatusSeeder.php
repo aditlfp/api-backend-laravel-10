@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Status;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -12,6 +13,11 @@ class StatusSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        $arr = ['Menunggu Approve', 'proses', 'approve', 'cancelled'];
+        foreach($arr as $data => $value){
+            $role = new Status();
+            $role->name = $value;
+            $role->save();
+        }
     }
 }
