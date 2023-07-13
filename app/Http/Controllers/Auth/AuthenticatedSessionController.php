@@ -19,7 +19,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return response()->noContent();
+        return response(['message' => 'Horayy ... You Are Loged']);
     }
 
     /**
@@ -27,12 +27,12 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request): Response
     {
-        Auth::guard('web')->logout();
+        Auth::guard('api')->logout();
 
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
 
-        return response()->noContent();
+        return response(['message' => 'Your Account Has Logo out']);
     }
 }
