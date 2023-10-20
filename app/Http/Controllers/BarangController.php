@@ -34,7 +34,7 @@ class BarangController extends Controller
         }
         try {
             Barang::create($barang);
-            return response()->json(['data' => $barang, 'message' => 'Barang Has Created'], 200,);
+            return response()->json(['data' => $barang, 'message' => 'Barang Has Created', 'status' => true], 200,);
         } catch (\Throwable $th) {
             return response()->json($th, 402);
         } 

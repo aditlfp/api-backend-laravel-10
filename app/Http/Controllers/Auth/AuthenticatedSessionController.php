@@ -13,13 +13,13 @@ class AuthenticatedSessionController extends Controller
     /**
      * Handle an incoming authentication request.
      */
-    public function store(LoginRequest $request): Response
+    public function store(LoginRequest $request)
     {
         $request->authenticate();
 
         $request->session()->regenerate();
-
-        return response(['message' => 'Horayy ... You Are Loged']);
+        $data = Auth::user();
+        return response()->json(["data" => $data, "status" => true, 'messege' => "Succes to Login", 200]);
     }
 
     /**
@@ -33,6 +33,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return response(['message' => 'Your Account Has Logo out']);
+        return response()->noContent();
     }
 }

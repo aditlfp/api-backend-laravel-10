@@ -13,7 +13,7 @@ class RoleSeeder extends Seeder
      */
     public function run(): void
     {
-        $arr = ['user', 'pros'];
+        $arr = ['user', 'admin'];
         foreach($arr as $data => $value){
             $role = new Role();
             $role->name = $value;

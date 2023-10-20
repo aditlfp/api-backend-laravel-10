@@ -13,7 +13,7 @@ class StatusSeeder extends Seeder
      */
     public function run(): void
     {
-        $arr = ['Menunggu Approve', 'proses', 'approve', 'cancelled'];
+        $arr = ['Pending', 'Approve', 'Cancelled'];
         foreach($arr as $data => $value){
             $role = new Status();
             $role->name = $value;

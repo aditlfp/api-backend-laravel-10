@@ -14,12 +14,13 @@ class AdminMiddleware
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next)
     {
-        if(Auth::user()->role_id != 1 )
+        if(Auth::user()->role_id != 2 )
         {
             Auth::logout();
-            return response()->json(['message' => 'Your Dont Have Permission.'], 422, );
+            $request->session()->flush();
+            return response()->json(['message' => 'Dont Have Permission'], 200);
         }
 
         return $next($request);

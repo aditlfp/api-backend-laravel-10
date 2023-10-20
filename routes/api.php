@@ -10,6 +10,7 @@ use App\Http\Controllers\StatusController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Laravel\Sanctum\Http\Controllers\CsrfCookieController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,25 +23,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
-//     return $request->user();
-// });
+Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
+    return $request->user();
+});
+
+Route::get('sanctum/csrf', [CsrfCookieController::class, 'show']);
 
 Route::middleware('auth')->group(function() {
     Route::get('/user', [UserController::class, 'index'])->name('user.index');
     Route::resource('/pesanan-user', PesananUserController::class);
+
 });
 
 
-Route::middleware('auth', 'admin')->group(function(){
+Route::middleware(['auth:sanctum', 'admin'])->group(function(){
     Route::patch('/approve/{id}', [MasterController::class, 'approve'])->name('approve');
-    Route::patch('/prosses/{id}', [MasterController::class, 'prosess'])->name('prosses');
     Route::patch('/cancelled/{id}', [MasterController::class, 'cancelled'])->name('cancelled');
-    Route::resource('/barang', BarangController::class);
     Route::resource('/mitra', MitraController::class);
     Route::resource('/pesanan', PesananController::class);
     Route::resource('/satuan', SatuanController::class);
     Route::resource('/status', StatusController::class);
+    Route::resource('/barang', BarangController::class);
 
 });
 
